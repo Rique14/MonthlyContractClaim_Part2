@@ -1,0 +1,77 @@
+﻿<Window x:Class="MonthlyClaimContractSystem_Part2.MainWindow" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonthlyClaimContractSystem_Part2"
+        mc:Ignorable="d"
+        Title="Contract Monthly Claim System" Height="450" Width="800" Background="#F0F0F0">
+
+    <Grid >
+
+        <TabControl Background="#F0F0F0" BorderThickness="0">
+            <!-- Tab for Lecturer Claim Submission -->
+            <TabItem Header="Submit Claim">
+                <Grid Margin="10" >
+                    <!-- Lecturer Claim Form -->
+                    <TextBlock Text="Lecturer Name:" VerticalAlignment="Top"  />
+                    <TextBox x:Name="LecturerName" VerticalAlignment="Top" Margin="0,20,0,0"/>
+
+                    <TextBlock Text="Hours Worked:" VerticalAlignment="Top" Margin="0,50,0,0" />
+                    <TextBox x:Name="HoursWorked" VerticalAlignment="Top" Margin="0,70,0,0"/>
+
+                    <TextBlock Text="Hourly Rate:" VerticalAlignment="Top" Margin="0,100,0,0" />
+                    <TextBox x:Name="HourlyRate" VerticalAlignment="Top" Margin="0,120,0,0"/>
+
+                    <TextBlock Text="Additional Notes:" VerticalAlignment="Top" Margin="0,150,0,0" />
+                    <TextBox x:Name="AdditionalNotes" VerticalAlignment="Top" Margin="0,170,0,0"/>
+
+                    <!-- Document Upload -->
+                    <TextBlock Text="Upload Supporting Document:" VerticalAlignment="Top" Margin="0,200,0,0" />
+                    <Button Content="Upload" VerticalAlignment="Top" Margin="0,220,0,0" Click="UploadDocument"  Background="#007ACC" Foreground="White"/>
+                    <TextBlock x:Name="UploadedFileName" VerticalAlignment="Top" Margin="0,250,0,0"/>
+
+                    <!-- Submit Claim -->
+                    <Button Content="Submit Claim" VerticalAlignment="Top" Margin="0,280,0,0" Background="#007ACC" Foreground="White"  Click="SubmitClaim"/>
+
+                    <TextBlock Text="Claim Status:" VerticalAlignment="Top" Margin="0,320,0,0" />
+                    <TextBox x:Name="ClaimStatus" IsReadOnly="True" VerticalAlignment="Top" Margin="0,340,0,0" />
+                </Grid>
+            </TabItem>
+
+            <!-- Tab for Programme Coordinator/Manager Approval -->
+            <TabItem Header="Approve Claims">
+                <Grid Margin="10">
+                    <!-- Pending Claims List -->
+                    <TextBlock Text="Pending Claims:" VerticalAlignment="Top" />
+                    <ListBox x:Name="PendingClaims" VerticalAlignment="Top" Margin="0,20,0,0" SelectionChanged="OnClaimSelected"/>
+
+                    <!-- Claim Details for Approval -->
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,150,0,0">
+                        <TextBlock Text="Lecturer Name:" />
+                        <TextBox x:Name="LecturerNameDetails" IsReadOnly="True" />
+
+                        <TextBlock Text="Hours Worked:" />
+                        <TextBox x:Name="HoursWorkedDetails" IsReadOnly="True" />
+
+                        <TextBlock Text="Hourly Rate:" />
+                        <TextBox x:Name="HourlyRateDetails" IsReadOnly="True" />
+
+                        <TextBlock Text="Total Amount:" />
+                        <TextBox x:Name="TotalAmountDetails" IsReadOnly="True" />
+
+                        <TextBlock Text="Additional Notes:" />
+                        <TextBox x:Name="AdditionalNotesDetails" IsReadOnly="True" />
+
+                        <TextBlock Text="Document:" />
+                        <TextBox x:Name="DocumentPathDetails" IsReadOnly="True" />
+                    </StackPanel>
+
+                    <!-- Approve and Reject Buttons -->
+                    <Button Content="Approve" VerticalAlignment="Bottom" Margin="0,300,700,0" Click="ApproveClaim" Background="#4CAF50" Foreground="White"/>
+                    <Button Content="Reject" VerticalAlignment="Bottom" Margin="700,30,0,0" Click="RejectClaim" Background="#F44336" Foreground="White"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
